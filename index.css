@@ -21,12 +21,12 @@ body {
 }
 
 .scrollbar-hide {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  display: none; 
 }
 
 
@@ -42,4 +42,6 @@ div.card {
   text-decoration: none;
   border-radius: 20px;
 }
+
+
 

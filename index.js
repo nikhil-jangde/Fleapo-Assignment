@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
       <div  style="background-color: rgb(247, 226, 164);" class="h-auto w-full border border-black rounded-3xl mb-8 text-center p-8">
       <div  class="flex w-full h-full">
        <div  class="w-[61%] p-2 font-Montserrat  ">
-        <h1 class="text-3xl w-full text-left font-bold text-black font-Montserrat tracking-wide">${dataItem.title}</h1>
+        <h1 class="lg:text-3xl md:text-3xl text-xl w-full text-left font-bold text-black font-Montserrat tracking-wide">${dataItem.title}</h1>
         <h1 class="text-left text-black py-5">${dataItem.description}</h1>
         <h1 class="text-left py-2 font-semibold">✔️ ${dataItem.point1}</h1>
-        <h1 class="text-left py-2 font-semibold">✔️ ${dataItem.point2}</h1>
         <h1 class="text-left py-2 font-semibold">✔️ ${dataItem.point3}</h1>
+        <h1 class="text-left py-2 font-semibold">✔️ ${dataItem.point2}</h1>
         <h1 class="text-left py-2 font-semibold">✔️ ${dataItem.point4}</h1>
       </div>
        <div class="w-[39%] p-2 "><img class="w-[100%] rounded-2xl" src="${dataItem.image}" /></div>
@@ -83,3 +83,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  const buttons = document.querySelectorAll('.button');
+  const cardContainer = document.getElementById('cardContainer');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const index = button.getAttribute('data-index');
+      reorderCards(index);
+      activateButton(button);
+    });
+  });
+
+  function reorderCards(index) {
+    const cards = document.querySelectorAll('.card');
+    const cardArray = Array.from(cards);
+    cardArray.sort((a, b) => a.dataset.index - b.dataset.index);
+    cardArray.forEach(card => cardContainer.appendChild(card));
+  }
+
+  function activateButton(clickedButton) {
+    buttons.forEach(button => {
+      button.classList.remove('active-button');
+    });
+    clickedButton.classList.add('active-button');
+  }
